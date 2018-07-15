@@ -42,55 +42,75 @@
  *   - All parameters can be persistent changed online using commands via MQTT, WebConsole or Serial.
 \*****************************************************************************************************/
 
-/*
-Examples :
 
 // -- Master parameter control --------------------
 #undef  CFG_HOLDER
-#define CFG_HOLDER        4617                   // [Reset 1] Change this value to load SECTION1 configuration parameters to flash
+#define CFG_HOLDER        6661                   // [Reset 1] Change this value to load SECTION1 configuration parameters to flash
 
 // -- Setup your own Wifi settings  ---------------
 #undef  STA_SSID1
-#define STA_SSID1         "YourSSID"             // [Ssid1] Wifi SSID
+#define STA_SSID1         "Ubernet"             // [Ssid1] Wifi SSID
 
 #undef  STA_PASS1
-#define STA_PASS1         "YourWifiPassword"     // [Password1] Wifi password
+#define STA_PASS1         "BDD5A42641"     // [Password1] Wifi password
 
 // -- Setup your own MQTT settings  ---------------
 #undef  MQTT_HOST
-#define MQTT_HOST         "your-mqtt-server.com" // [MqttHost]
+#define MQTT_HOST         "192.168.0.6" // [MqttHost]
 
 #undef  MQTT_PORT
 #define MQTT_PORT         1883                   // [MqttPort] MQTT port (10123 on CloudMQTT)
 
 #undef  MQTT_USER
-#define MQTT_USER         "YourMqttUser"         // [MqttUser] Optional user
+#define MQTT_USER         "home"         // [MqttUser] Optional user
 
 #undef  MQTT_PASS
-#define MQTT_PASS         "YourMqttPass"         // [MqttPassword] Optional password
+#define MQTT_PASS         "HAss7412369"         // [MqttPassword] Optional password
 
-// You might even pass some parameters from the command line ----------------------------
-// Ie:  export PLATFORMIO_BUILD_FLAGS='-DUSE_CONFIG_OVERRIDE -DMY_IP="192.168.1.99" -DMY_GW="192.168.1.1" -DMY_DNS="192.168.1.1"'
+#undef SAVE_STATE
+#define SAVE_STATE             0                // [SetOption0] Save changed power state to Flash (0 = disable, 1 = enable)
 
-#ifdef MY_IP
-#undef  WIFI_IP_ADDRESS
-#define WIFI_IP_ADDRESS   MY_IP                  // Set to 0.0.0.0 for using DHCP or IP address
-#endif
+#undef NTP_SERVER1
+#define NTP_SERVER1            "192.168.0.1"
 
-#ifdef MY_GW
-#undef  WIFI_GATEWAY
-#define WIFI_GATEWAY      MY_GW                  // if not using DHCP set Gateway IP address
-#endif
+#undef TIME_STD_HEMISPHERE
+#define TIME_STD_HEMISPHERE    South 
+#undef TIME_STD_OFFSET
+#define TIME_STD_OFFSET        +120
 
-#ifdef MY_DNS
-#undef  WIFI_DNS
-#define WIFI_DNS          MY_DNS                 // If not using DHCP set DNS IP address (might be equal to WIFI_GATEWAY)
-#endif
+#undef APP_TIMEZONE
+#define APP_TIMEZONE           +2    
 
-*/
+#undef LATITUDE
+#undef LONGITUDE
+#define LATITUDE               -26.1060610         // [Latitude] Your location to be used with sunrise and sunset
+#define LONGITUDE              28.004          // [Longitude] Your location to be used with sunrise and sunset
 
+#undef MQTT_LIBRARY_TYPE
+#define MQTT_LIBRARY_TYPE      MQTT_TASMOTAMQTT
 
+#undef USE_DOMOTICZ 
 
+#define USE_KNX  
 
+#undef USE_I2C  
+
+#undef USE_EMULATION
+
+#undef USE_MHZ19
+#undef USE_SENSEAIR
+#undef USE_PMS5003                              // Add support for PMS5003 and PMS7003 particle concentration sensor (+1k3 code)
+#undef USE_NOVA_SDS                             // Add support for SDS011 and SDS021 particle concentration sensor (+0k7 code)
+#undef USE_PZEM004T                             // Add support for PZEM004T Energy monitor (+2k code)
+#undef USE_SDM120                               // Add support for Eastron SDM120-Modbus energy meter (+1k7 code)
+#undef USE_SDM630
+
+#define USE_SERIAL_MQTT         
+
+#undef USE_IR_REMOTE
+#undef USE_IR_RECEIVE
+
+#undef USE_ARILUX_RF  
+#undef USE_SR04
 
 #endif  // _USER_CONFIG_OVERRIDE_H_
